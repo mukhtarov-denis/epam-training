@@ -1,6 +1,6 @@
 package app.factory;
 
-import app.operator.impl.Manager;
+import app.operation.impl.Manager;
 
 public class BouquetFactory {
     private static Manager manager;
