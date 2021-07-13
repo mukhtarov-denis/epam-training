@@ -35,6 +35,8 @@ public abstract class BaseFlower implements Flower {
     
     @Override
     public String getDescription() {
-        return type.getName() + "(" + length + " m., " + freshness.getName() + ")";
+        String description = String.format("%s(%.2f m., %s, price: %.2f ð.)", 
+                type.getName(), length, freshness.getName(), getPrice());
+        return description;
     }
 }
