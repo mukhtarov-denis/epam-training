@@ -7,7 +7,7 @@ public class PrintImpl implements Print {
 
     @Override
     public void toConsole(Bouquet bouquet) {
-        System.out.printf("Bouquet: %s\n", bouquet.getDescription());
+        System.out.printf("Bouquet:\n%s\n", bouquet.toString());
         System.out.printf("Price: %.2f ð.\n", bouquet.getPrice());
     }
 }
