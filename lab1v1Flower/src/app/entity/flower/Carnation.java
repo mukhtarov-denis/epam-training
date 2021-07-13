@@ -10,6 +10,6 @@ public class Carnation extends BaseFlower {
 
     @Override
     public double getPrice() {
-        return getCost();
+        return getCost() * getFreshness().getValue() / (double) 10;
     }
 }
