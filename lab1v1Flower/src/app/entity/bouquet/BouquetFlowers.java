@@ -50,4 +50,13 @@ public class BouquetFlowers implements Bouquet {
     public void sort(Comparator<Flower> comparator) {
         Collections.sort(flowerList, comparator);   
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder description = new StringBuilder();
+        for (Flower flower : flowerList) {
+            description.append(flower.getDescription()).append("\n");
+        }
+        return description.toString().trim();
+    }
 }
