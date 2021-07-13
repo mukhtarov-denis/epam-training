@@ -10,6 +10,7 @@ public class Rose extends BaseFlower {
     
     @Override
     public double getPrice() {
-        return getCost() - (1 - getLength()) * getCost();
+        return (getCost() - (1 - getLength()) * getCost()) 
+                * getFreshness().getValue() / (double) 10;
     }
 }
