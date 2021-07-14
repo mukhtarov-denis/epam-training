@@ -6,6 +6,7 @@ import java.util.List;
 import app.entity.flower.Flower;
 
 public interface Bouquet {
+    int getSize();
     String getDescription();
     double getPrice();
     void addFlower(Flower flower);
