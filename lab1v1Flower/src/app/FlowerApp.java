@@ -17,38 +17,38 @@ public class FlowerApp {
         Manager manager = BouquetFactory.getInstance();
         Bouquet bouquet = manager.buildBouquet();
         Menu menu = new ConsoleMenu();
-        menu.add(new MenuItem("Показать состав букета") {   
+        menu.add(new MenuItem("РџРѕРєР°Р·Р°С‚СЊ СЃРѕСЃС‚Р°РІ Р±СѓРєРµС‚Р°") {   
             @Override
             public void toDo() {
                 manager.toConsole(bouquet);
             }
         });
         
-        menu.add(new MenuItem("Сортировать цветы в букете по свежести.") {
+        menu.add(new MenuItem("РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ С†РІРµС‚С‹ РІ Р±СѓРєРµС‚Рµ РїРѕ СЃРІРµР¶РµСЃС‚Рё.") {
             @Override
             public void toDo() {
                 manager.sort(bouquet, new FreshnessComparator());
-                System.out.println("Сортировка завершена...\n");
+                System.out.println("РЎРѕСЂС‚РёСЂРѕРІРєР° Р·Р°РІРµСЂС€РµРЅР°...\n");
             }
         });
         
-        menu.add(new MenuItem("Поиск цветка по заданному диапазону длин стеблей (в см.)") {
+        menu.add(new MenuItem("РџРѕРёСЃРє С†РІРµС‚РєР° РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РґРёР°РїР°Р·РѕРЅСѓ РґР»РёРЅ СЃС‚РµР±Р»РµР№ (РІ СЃРј.)") {
             private Scanner scanner;
             
             @Override
             public void toDo() {
-                System.out.println("\tВведите два числа для диапазона в сантиметрах, разделенных пробелами.");
+                System.out.println("\tР’РІРµРґРёС‚Рµ РґРІР° С‡РёСЃР»Р° РґР»СЏ РґРёР°РїР°Р·РѕРЅР° РІ СЃР°РЅС‚РёРјРµС‚СЂР°С…, СЂР°Р·РґРµР»РµРЅРЅС‹С… РїСЂРѕР±РµР»Р°РјРё.");
                 scanner = new Scanner(System.in);
                 String[] values = scanner.nextLine().split(" ");
                 Filter filter = new RangeLength(Integer.valueOf(values[0]), Integer.valueOf(values[1]));
                 Bouquet result = manager.find(bouquet, filter);
                 manager.toConsole(result);
-                System.out.println("\tРезультат поиска:");
+                System.out.println("\tР РµР·СѓР»СЊС‚Р°С‚ РїРѕРёСЃРєР°:");
                 manager.toConsole(result);
             }
         });
         
-        menu.add(new MenuItem("Выход") {
+        menu.add(new MenuItem("Р’С‹С…РѕРґ") {
             @Override
             public void toDo() {
                 System.out.println("Done");
