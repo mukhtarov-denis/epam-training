@@ -15,10 +15,13 @@ import by.epam.training.lab2.v1.entity.composite.Component;
 import by.epam.training.lab2.v1.entity.composite.component.Text;
 import by.epam.training.lab2.v1.exception.ApplicationException;
 import by.epam.training.lab2.v1.exception.FileReaderException;
+import by.epam.training.lab2.v1.exception.WriterException;
 import by.epam.training.lab2.v1.filter.impl.SentenceTypeFilter;
 import by.epam.training.lab2.v1.filter.impl.WordTypeFilter;
 import by.epam.training.lab2.v1.reader.TextReader;
 import by.epam.training.lab2.v1.reader.impl.FileTextReader;
+import by.epam.training.lab2.v1.writer.TextWriter;
+import by.epam.training.lab2.v1.writer.impl.FileTextWriter;
 
 public class Runner {
     
@@ -39,9 +42,10 @@ public class Runner {
     }
     
     public void run() throws ApplicationException {
-        File inputFile = new File("inputText.txt");
+        StringBuilder logProcess = new StringBuilder();
+        File inputFile = new File("capital.txt");
         TextReader textReader = new FileTextReader(inputFile);
-        System.out.println("Начато чтение файла");
+        logProcess.append("Начато чтение файла").append("\n");
         long start = getTimeInMillis();
         StringBuilder sb;
         try {
@@ -50,57 +54,49 @@ public class Runner {
             throw new ApplicationException("Ошибка приложения при обработке данных", e);
         }
         long end = getTimeInMillis();
-        System.out.printf("Время чтения файла: %.3f сек.\n", getDuration(start, end));
-        System.out.println("Началась обработка данных...");
+        logProcess.append(String.format("Время чтения файла: %.3f сек.\n", getDuration(start, end)));
+        logProcess.append("Началась обработка данных...\n");
         start = getTimeInMillis();
         Component text = new Text();
         text.build(sb);
         end = getTimeInMillis();
-        System.out.printf("Время обработки данных: %.3f сек.\n", getDuration(start, end));
-        System.out.println("Получение всех слов и предложений...");
+        logProcess.append(String.format("Время обработки данных: %.3f сек.\n", getDuration(start, end)));
+        logProcess.append("Получение всех слов и предложений...\n");
         start = getTimeInMillis();
         List<Component> words = text.getElements(new WordTypeFilter());
         List<Component> sentences = text.getElements(new SentenceTypeFilter());
         end = getTimeInMillis();
-        System.out.printf("Время получения: %.3f сек.\n", getDuration(start, end));
-        
-        System.out.println("Формирование множества уникальных слов...");
+        logProcess.append("Время получения: ").append(String.format("%.3f", getDuration(start, end))).append(" сек.\n");
+        logProcess.append(String.format("Время получения: %.3f сек.\n", getDuration(start, end)));
         start = getTimeInMillis();
         Map<Component, Set<Component>> wordMap = new HashMap<>();
         for (Component word : words) {
             wordMap.put(word, new HashSet<>());
         }
         end = getTimeInMillis();
-        System.out.printf("Время формирования множества уникальных слов: %.3f сек.\n", getDuration(start, end));        
-        System.out.printf("В тексте: %d предложений\n", sentences.size());
-        System.out.printf("В тексте: %d слов(о,а), уникальных: %d\n", words.size(), wordMap.keySet().size());
-        System.out.println("*************************************************");
-        
-        System.out.println("Формирование карты множества предложений для уникальных слов...");
+        logProcess.append(String.format("Время формирования множества уникальных слов: %.3f сек.\n", getDuration(start, end)));
+        logProcess.append(String.format("В тексте: %d предложений\n", sentences.size()));
+        logProcess.append(String.format("В тексте: %d слов(о,а), уникальных: %d\n\n", words.size(), wordMap.keySet().size()));
+        logProcess.append("Формирование карты множества предложений для уникальных слов...\n");
         start = getTimeInMillis();
         for (Component sentence : sentences) {
             addSentence(wordMap, sentence);
         }
         end = getTimeInMillis();
-        System.out.printf("Время формирования карты: %.3f сек.\n", getDuration(start, end));
-        System.out.println("*************************************************");
-        
-        System.out.println("Вывод карты...");
+        logProcess.append(String.format("Время формирования карты: %.3f сек.\n\n", getDuration(start, end)));
+        logProcess.append("Вывод карты...");
         start = getTimeInMillis();
         for (Entry<Component, Set<Component>> entry : wordMap.entrySet()) {
             if (entry.getValue().size() > 1) {
-                System.out.printf("Слово \"%s\" содержится в %d предложениях:\n", entry.getKey(), entry.getValue().size());
+                logProcess.append(String.format("Слово \"%s\" содержится в %d предложениях:\n", entry.getKey(), entry.getValue().size()));
                 for (Component sentence : entry.getValue()) {
                     int occurrences = Collections.frequency(sentence.getElements(new WordTypeFilter()), entry.getKey());
-                    System.out.printf("\t%d раз(а) в \"%s\"\n", occurrences, sentence);
+                    logProcess.append(String.format("\t%d раз(а) в \"%s\"\n", occurrences, sentence));
                 }
             }
         }
         end = getTimeInMillis();
-        System.out.printf("Время вывода карты: %.3f сек.\n", getDuration(start, end));
-        System.out.println("*************************************************");
-
-        System.out.println("Поиск количества предложений...");
+        logProcess.append(String.format("Время вывода карты: %.3f сек.\n\n", getDuration(start, end)));
         start = getTimeInMillis();
         int maxValue = 0;
         for (Entry<Component, Set<Component>> entry : wordMap.entrySet()) {
@@ -109,8 +105,16 @@ public class Runner {
             }
         }
         end = getTimeInMillis();
-        System.out.printf("Наибольшее количество предложений текста, в которых есть одинаковые слова: %d\n", maxValue);
-        System.out.printf("Время поиска: %.3f сек.\n", getDuration(start, end));
-        System.out.println("*************************************************");
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("Наибольшее количество предложений текста, в которых есть одинаковые слова: %d\n", maxValue));
+        result.append(String.format("Время поиска: %.3f сек.\n\n", getDuration(start, end)));
+        result.append("Процесс выполнения:\n\n");
+        result.append(logProcess);
+        TextWriter tw = new FileTextWriter();
+        try {
+            tw.write(new File("output.txt"), result);
+        } catch (WriterException e) {
+            throw new ApplicationException("Error write data to file", e);
+        }
     }
 }
