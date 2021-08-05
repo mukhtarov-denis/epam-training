@@ -24,9 +24,4 @@ public class Word extends AbstractComponent {
     public StringBuilder read(Visitor visitor) {
         return visitor.read(this);
     }
-    
-    @Override
-    public String toString() {
-        return "word: " + "\"" + value + "\"";
-    }
 }
