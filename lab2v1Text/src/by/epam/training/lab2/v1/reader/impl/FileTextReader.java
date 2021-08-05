@@ -41,12 +41,6 @@ public class FileTextReader implements TextReader {
                 if (reader != null) {
                     reader.close();
                 }
-                if (inputStreamReader != null) {
-                    inputStreamReader.close();
-                }
-                if (fileInputStream != null) {
-                    fileInputStream.close();
-                }
             } catch (Exception e) {}
         }
     }
