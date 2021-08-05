@@ -18,7 +18,7 @@ public class ConsoleMenu implements Menu {
 
     @Override
     public void print() {
-        System.out.println("\tВыберите пункт меню:");
+        System.out.println("\tР’С‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ:");
         int i = 1;
         for (MenuItem menuItem : itemList) {
             System.out.println(i + ". " + menuItem.getDescription());
