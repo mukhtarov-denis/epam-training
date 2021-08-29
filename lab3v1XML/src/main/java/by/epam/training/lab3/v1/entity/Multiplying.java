@@ -1,9 +1,9 @@
 package by.epam.training.lab3.v1.entity;
 
 public enum Multiplying {
-    LEAF("Листья"),
-    STALK("Черенок"),
-    SEED("Семена");
+    LEAF("Р›РёСЃС‚СЊСЏ"),
+    STALK("Р§РµСЂРµРЅРѕРє"),
+    SEED("РЎРµРјРµРЅР°");
     
     private String multiplying;
     

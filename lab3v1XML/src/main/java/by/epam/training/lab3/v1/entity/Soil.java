@@ -1,9 +1,9 @@
 package by.epam.training.lab3.v1.entity;
 
 public enum Soil {
-    PODZOLIC("Подзолистая"),
-    GROUND("Грунтовая"),
-    SOD_PODZOLIC("Дерново-подзолистая");
+    PODZOLIC("РџРѕРґР·РѕР»РёСЃС‚Р°СЏ"),
+    GROUND("Р“СЂСѓРЅС‚РѕРІР°СЏ"),
+    SOD_PODZOLIC("Р”РµСЂРЅРѕРІРѕ-РіСЂСѓРЅС‚РѕРІР°СЏ");
     
     private String description;
     
