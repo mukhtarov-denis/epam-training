@@ -18,11 +18,11 @@ public class AbstractMessage implements Message {
     @Override
     public StringBuilder message() {
         StringBuilder message = new StringBuilder();
-        message.append(type.name()).append(":").append("\n");
+        message.append("Type: ").append(type.name()).append(":").append("\n");
         message.append("system id: ").append(exception.getSystemId()).append("\n");
         message.append("line: ").append(exception.getLineNumber()).append(", ");
         message.append("column: ").append(exception.getColumnNumber()).append("\n");
-        message.append(exception.getMessage());
+        message.append(exception.getMessage()).append("\n");
         return message;
     }
 }
