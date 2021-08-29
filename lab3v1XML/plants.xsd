@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://www.epam.com/plants" 
+    xmlns="http://www.epam.com/plants" 
+    elementFormDefault="qualified">
+
+    <xs:element name="name" type="xs:string" />
+    <xs:element name="origin" type="xs:string"/>
+    <xs:element name="stem_color" type="xs:string"/>
+    <xs:element name="leaf_color" type="xs:string"/>
+    <xs:element name="average_length" type="xs:integer"/>
+    <xs:element name="min_temperature">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:minInclusive value="0"/>
+                <xs:maxInclusive value="15"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element> 
+    <xs:element name="max_temperature">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:minInclusive value="16"/>
+                <xs:maxInclusive value="40"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="soil">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="PODZOLIC"/>
+                <xs:enumeration value="GROUND"/>
+                <xs:enumeration value="SOD_PODZOLIC"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="visuals">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="stem_color"/>
+                <xs:element ref="leaf_color"/>
+                <xs:element ref="average_length"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="light">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:boolean">
+                    <xs:attribute name="note" type="xs:string" use="required" fixed="светолюбиво"></xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="water">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:positiveInteger">
+                    <xs:attribute name="note" type="xs:string" use="required" fixed="мл. в неделю"/>
+                </xs:extension>
+             </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="growing_tips">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="min_temperature"/>
+                <xs:element ref="max_temperature"/>
+                <xs:element ref="light"/>
+                <xs:element ref="water"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="multiplying">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="LEAF"/>
+                <xs:enumeration value="STALK"/>
+                <xs:enumeration value="SEED"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    <xs:element name="plant">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name" />
+                <xs:element ref="soil" />
+                <xs:element ref="origin" />
+                <xs:element ref="visuals" />
+                <xs:element ref="growing_tips" />
+                <xs:element ref="multiplying" />
+            </xs:sequence>
+            <xs:attribute name="idPlant" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- root element -->    
+    <xs:element name="plants">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="plant" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
