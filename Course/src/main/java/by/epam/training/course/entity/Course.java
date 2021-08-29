@@ -2,7 +2,8 @@ package by.epam.training.course.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Course extends Entity implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -10,7 +11,7 @@ public class Course extends Entity implements Serializable {
     private Date startDate;
     private Date endDate;
     private Teacher teacher;
-    private Set<Student> students;
+    private List<Student> students = new ArrayList<>();
     
     public String getName() {
         return name;
@@ -44,11 +45,11 @@ public class Course extends Entity implements Serializable {
         this.teacher = teacher;
     }
     
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
     
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 }
