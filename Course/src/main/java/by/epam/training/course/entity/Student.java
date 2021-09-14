@@ -8,7 +8,7 @@ public class Student extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer studentNumber;
     private Integer groupNumber;
-    private List<Course> courses = new ArrayList<>();
+    private List<Mark> marks = new ArrayList<>();
     
     public Integer getStudentNumber() {
         return studentNumber;
@@ -26,12 +26,12 @@ public class Student extends Person implements Serializable {
         this.groupNumber = groupNumber;
     }
     
-    public List<Course> getCourses() {
-        return courses;
+    public List<Mark> getMarks() {
+        return marks;
     }
     
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setMarks(List<Mark> marks) {
+        this.marks = marks;
     }
     
     @Override
