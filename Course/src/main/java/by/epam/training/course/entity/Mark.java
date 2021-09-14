@@ -2,7 +2,7 @@ package by.epam.training.course.entity;
 
 import java.io.Serializable;
 
-public class Assessment implements Serializable {
+public class Mark implements Serializable {
     private static final long serialVersionUID = 1L;
     private Course course;
     private Student student;
