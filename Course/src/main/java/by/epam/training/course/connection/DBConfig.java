@@ -1,6 +1,7 @@
 package by.epam.training.course.connection;
 
 public class DBConfig {
+    private String driverName;
     private int initPoolSize;
     private int maxPoolSize;
     private int validationTimeout;
@@ -9,6 +10,15 @@ public class DBConfig {
     private String password;
     
     public DBConfig() {
+    
+    }
+    
+    public String getDriverName() {
+        return driverName;
+    }
+    
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
     }
     
     public int getInitPoolSize() {
