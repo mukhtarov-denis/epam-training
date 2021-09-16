@@ -52,4 +52,14 @@ public class Course extends Entity implements Serializable {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+    
+    @Override
+    public int hashCode() {
+        return getId();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        return getId() == ((Course) obj).getId();
+    }
 }
