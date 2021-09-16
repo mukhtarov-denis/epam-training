@@ -3,10 +3,19 @@ package by.epam.training.course.entity;
 import java.sql.Date;
 
 public class Person extends Entity {
+    private User user;
     private String surname;
     private String name;
     private String patronymic;
     private Date bornDate;
+    
+    public User getUser() {
+        return user;
+    }
+    
+    public void setUser(User user) {
+        this.user = user;
+    }
     
     public String getSurname() {
         return surname;
