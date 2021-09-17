@@ -1,0 +1,27 @@
+.size14 {
+    font-size: 14pt;
+}
+
+.size16 {
+    font-size: 16pt;
+}
+
+.size18 {
+	font-size: 18pt;
+}
+
+.size20 {
+	font-size: 20pt;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
+}

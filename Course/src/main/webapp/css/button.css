@@ -1,0 +1,13 @@
+.flat-button {
+    background-color: transparent;
+    border: 0;
+}
+
+.flat-button:hover {
+    cursor: pointer;
+}
+
+.flat-button:focus {
+    outline: none;
+    border: none;
+}

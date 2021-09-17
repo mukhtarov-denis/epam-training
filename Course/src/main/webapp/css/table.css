@@ -1,0 +1,15 @@
+table > caption {
+	color: black;
+	caption-side: top;
+}
+
+.table > tbody > tr > th {
+     vertical-align: middle;
+}
+
+table {
+    td,
+    th {
+        vertical-align: middle !important;
+    }
+}
