@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%date{HH:mm:ss} %-5level [%thread] %class.%method(): line: %line %n %msg %n %exception %n"/>
+        </Console>
+        <File name="File" filename="d:/app.log" append="true">
+            <PatternLayout>
+                <Pattern>%date{dd.MM.yyyy HH:mm:ss} %-5level [%thread] %class.%method(): line: %line %n %msg %n %exception %n</Pattern>
+            </PatternLayout>
+        </File>
+        
+        <Console name="UrlConsole" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%date{dd.MM.yyyy HH:mm:ss} %-5level %msg %n</Pattern>
+            </PatternLayout>
+        </Console>
+        <File name="UrlFile" filename="d:/url.log" append="true">
+            <PatternLayout>
+                <Pattern>%date{dd.MM.yyyy HH:mm:ss} %-5level %msg %n</Pattern>
+            </PatternLayout>
+        </File>
+        <File name="AuthFile" filename="d:/auth.log" append="true">
+            <PatternLayout>
+                <Pattern>%date{dd.MM.yyyy HH:mm:ss} %-5level %msg %n</Pattern>
+            </PatternLayout>
+        </File>  
+    </Appenders>
+    
+    <Loggers>
+        <Root level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+        <Logger name="by.epam.training.course.filter.SecurityFilter" level="trace" additivity="false">
+            <AppenderRef ref="UrlConsole"/>
+            <AppenderRef ref="UrlFile"/>
+        </Logger>
+        <Logger name="by.epam.training.course.listener.ApplicationSessionListener" level="trace" additivity="false">
+            <AppenderRef ref="AuthFile"/>
+        </Logger>
+        <Logger name="by.epam.training.course.listener.ApplicationSessionAttributeListener" level="trace" additivity="false">
+            <AppenderRef ref="AuthFile"/>
+        </Logger>
+    </Loggers>
+</Configuration>
