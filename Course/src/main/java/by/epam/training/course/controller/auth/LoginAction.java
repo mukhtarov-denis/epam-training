@@ -31,7 +31,6 @@ public class LoginAction extends Action {
                         UserContext userContext = new UserContext(user);
                         userContext.setState(new StudentState());
                         userContext.define();
-                        logger.info(String.format("User: \"%s\" signup ...", user.getUsername()));
                         session.setAttribute("session_user_context", userContext);
                         if (lastUrl != null) {
                             return new Forward(lastUrl, true);
