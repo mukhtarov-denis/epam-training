@@ -1,0 +1,60 @@
+application.button.addMark=Выставить отметку/отзыв
+application.button.signup=Записаться
+
+application.messages.auth.bad_password=Неправильный пароль
+application.messages.auth.bad_user=Пользователь не найден
+application.messages.course.welcome=Курсы переворошив, намотай себе на ус - все курсы хороши, выбирай на вкус!
+application.messages.insufficient_privileges=Извините, недостаточно прав ...
+application.messages.mark.missing=Оценка отсутствует
+application.messages.needSignin=Вы не вошли в систему, либо закончилось время посещения
+application.messages.review.missing=Отзыв не написан
+application.messages.welcome=Мы рады приветствовать Вас на страницах нашего сайта! Надеемся, что Вы найдете себе факультатив по вкусу!
+
+application.title.addReview=Написать отзыв
+application.title.all_courses=Все курсы
+application.title.course.signup=Записаться на курс
+application.title.course_students=Студенты курса
+application.title.course=Курс
+application.title.dborn=Дата рождения
+application.title.dear=Уважаемый(ая)
+application.title.logout=Выйти
+application.title.main_page=Главная страница
+application.title.mark_review=Оценка и отзыв
+application.title.mark=Оценка
+application.title.name=Имя
+application.title.number=№
+application.title.patronymic=Отчество
+application.title.review=Отзыв
+application.title.role=Роль
+application.title.setMark=Выставить оценку
+application.title.signin=Войти
+application.title.student.list=Список студентов
+application.title.student=Студент
+application.title.students=Студенты
+application.title.surname=Фамилия
+application.title.teacher=Преподаватель
+application.title.viewAllCourses=Смотреть все курсы
+application.title=Факультатив
+
+course.can_signup=Доступна запись
+course.end_date=Дата окончания
+course.messages.notFinish=Курс еще не завершен, оценки выставлять рано ...
+course.start_date=Дата начала
+
+exception.incorrect_values=Некорректные данные
+exception.teacher.id_is_null=Id учителя не указан
+
+login.password=Пароль
+login.username=Имя пользователя
+login.welcome=Добро пожаловать!
+
+student.group=№ группы
+student.messages.error.owner=Можно посмотреть только свою оценку / отзыв ...
+student.messages.question_signup=Вы хотите записаться на курс?
+student.messages.signup=Вы уже записаны на этот курс ...
+student.number=№ зачетки
+student.title.courses=Мои курсы
+
+teacher.messages.error.owner=Вы не являетесь преподавателем курса ...
+teacher.messages.mark_update=Оценка / отзыв успешно добавлен(а) ...
+teacher.title.students=Мои студенты
